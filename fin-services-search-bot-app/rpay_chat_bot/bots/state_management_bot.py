@@ -51,14 +51,14 @@ class StateManagementBot(ActivityHandler):
 
                 # Acknowledge that we got their name.
                 await turn_context.send_activity(
-                    f"Thanks { user_profile.name }. To see conversation data, type anything."
+                    f"Thanks { user_profile.name }. Let me know how can I help you today"
                 )
 
                 # Reset the flag to allow the bot to go though the cycle again.
                 conversation_data.prompted_for_user_name = False
             else:
                 # Prompt the user for their name.
-                await turn_context.send_activity("What is your name?")
+                await turn_context.send_activity("I am your AI Assistant from Razorpay. I can help you quickly get to it! Can you help me with your name?")
 
                 # Set the flag to true, so we don't prompt in the next turn.
                 conversation_data.prompted_for_user_name = True
@@ -70,6 +70,10 @@ class StateManagementBot(ActivityHandler):
             conversation_data.channel_id = turn_context.activity.channel_id
 
             l_chat_history = conversation_data.chat_history
+            if l_chat_history is None:
+                conversation_data.chat_history = self.init_meta_prompt()
+                l_chat_history = conversation_data.chat_history
+            
             l_chat_history.append({"role": "user", "content": turn_context.activity.text})
 
             response_message = openai.ChatCompletion.create(
