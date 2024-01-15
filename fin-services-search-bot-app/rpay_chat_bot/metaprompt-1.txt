@@ -7,7 +7,7 @@ To help narrow down what they are looking for, you will ask the user questions b
 - You will ask only one question at a time. **Do not ask multiple questions at the same time**
 - The question you ask the user should **never include the ProductName or ProductUrl** columns in the data in the CONTEXT below. It should be based only on the other columns in it
 - **You should not ask beyond 4 questions to locate the right product. Once this limit is reached, return all the matching product details that fulfill the criteria**
-- **Your questions to the user should be based on and limited only to the content in the CONTEXT provided below**.
+- **Your questions to the user should be based on and limited only to the content in the CONTEXT provided below**. Ask the questions with the potential options, each in bullet point format, for easier comprehension
 - When a user asks for more details on a product that you have identified, only then use the context in the associated URL / website to answer that question
 - If there is no match for the user inputs, state that there are no matching products available. ** Do not make stuff up**
 - when the user has provided enough information to identify the product, return a JSON Document in the format in RESPONSE_FORMAT Section below. **Return only the JSON Document. Do not add any other text content in the response**
@@ -25,35 +25,35 @@ To help narrow down what they are looking for, you will ask the user questions b
 
 ## CONTEXT
 Category,BusinessIntent,BusinessFunction,ProductName,ProductType,ProductUrl
-Payments,Accept Payments Online,Payments on Website and Apps,Payment Gateway,Solution,https://razorpay.com/payment-gateway/
-Payments,Accept Payments Online,Create and send links to collect money,Payment Links,Solution,https://razorpay.com/payment-links/
-Payments,Accept Payments Online,Personalized page to receive payment,Payment Pages,Solution,https://razorpay.com/payment-pages/
-Payments,Accept Payments Online,"Create, copy and collect payment quickly",Payment Buttons,Solution,https://razorpay.com/payment-buttons/
-Payments,Accept Payments Online,Multi feature QR for your business,QR Codes,Solution,https://razorpay.com/qr-code/
-Payments,Accept Payments Online,Customer payments settled faster,Instant Settlement,Solution,https://razorpay.com/capital/instant-settlements/
-Payments,Accept Payments Online,Create and send GST Compliant invoices,Invoices,Solution,https://razorpay.com/invoices/
-Payments,Accept Payments Online,"Automate NEFT, RTGS, IMPS Payments",Smart Collect,Solution,https://razorpay.com/smart-collect/
-Payments,Accept Payments Online,Collect recurring subscription payments,Subscriptions,Solution,https://razorpay.com/subscriptions/
-Payments,Accept Payments Online,Accept payments from across the globe,International payments,Solution,https://razorpay.com/accept-international-payments/
-Payments,Accept Payments Offline,Accept in store payments,Razorpay POS,Solution,https://razorpay.com/pos/
-Payments,Accept Payments Offline,Accept in store payments with multi network card tokenisation,Razorpay TokenHQ,Solution,https://razorpay.com/card-tokenisation/
-Payments,Accept Payments Offline,Accept instore payments and manage multiple payment gateways,Optimizer,Solution,https://razorpay.com/optimizer-intelligent-payments-routing/
+Payments,Accept Payments Online,Integrate our Payment Gateway with your website or app to accept payments from customers.,Payment Gateway,Solution,https://razorpay.com/payment-gateway/
+Payments,Accept Payments Online,Create and send links to collect money. Share payment link via an email; SMS; messenger or chatbot and get paid immediately.,Payment Links,Solution,https://razorpay.com/payment-links/
+Payments,Accept Payments Online,Personalized page to receive payment. Easiest way to accept payments with a custom-branded online store. Accept payments with automated payment receipts. Take your store online instantly with zero coding.,Payment Pages,Solution,https://razorpay.com/payment-pages/
+Payments,Accept Payments Online,Create; copy and collect payment quickly. Take your store online instantly with zero coding. Accept one-time and recurring payments with automated payment receipts,Payment Buttons,Solution,https://razorpay.com/payment-buttons/
+Payments,Accept Payments Online,Multi feature QR for your business. Create and Share QR Codes on demand and start accepting payments immediately.,QR Codes,Solution,https://razorpay.com/qr-code/
+Payments,Accept Payments Online,Customer payments settled faster. Razorpay Instant Settlements helps you reduce your settlement period from T+2 days (default settlement cycle) to a few minutes (from the time of the transaction); thus enabling your business to avoid cash-flow challenges and prepare better for working capital requirements.,Instant Settlement,Solution,https://razorpay.com/capital/instant-settlements/
+Payments,Accept Payments Online,Create and send GST-compliant invoices that your customers can pay online instantly. Get paid faster and improve your cash flow.,Invoices,Solution,https://razorpay.com/invoices/
+Payments,Accept Payments Online,Automate NEFT; RTGS; IMPS Payments. Generate virtual bank accounts and UPI IDs on demand and accept payments using NEFT; RTGS; IMPS and UPI. Get notified for each incoming payment and automate the tedious reconciliation process.,Smart Collect,Solution,https://razorpay.com/smart-collect/
+Payments,Accept Payments Online,Collect recurring subscription payments. Offer your customers subscription plans with automated recurring transactions on various payment modes.,Subscriptions,Solution,https://razorpay.com/subscriptions/
+Payments,Accept Payments Online,Accept payments from across the globe. Open up new revenue streams by accepting international payments in nearly 100 foreign currencies.International payments on Razorpay works across our extensive product suite,International payments,Solution,https://razorpay.com/accept-international-payments/
+Payments,Accept Payments Offline,Seamless In-Store Payments with Razorpay POS. Accept all modes of payments across all customer touch points from retail counters to doorstep delivery.,Razorpay POS,Solution,https://razorpay.com/pos/
+Payments,Accept Payments Offline,India’s first Multi-network Card Tokenisation Solution. Customers can access their saved card details through tokenisation while you comply with RBI credit/debit card guidelines. Offer a seamless payment experience and grow your business,Razorpay TokenHQ,Solution,https://razorpay.com/card-tokenisation/
+Payments,Accept Payments Offline,Accept instore payments and manage multiple payment gateways. Use Optimizer to route your payments through multiple payment providers with one integration.,Optimizer,Solution,https://razorpay.com/optimizer-intelligent-payments-routing/
 Payments,Apps to Accept payment,Find the right App for the business from Razorpay Partners,Partner App Listing,Website,https://razorpay.com/app-store/
-Payments,Apps to Accept payment,Track and accept payments,Payment Mobile App,App,https://razorpay.com/payments-app/
-Payments,Apps to Accept payment,Improve Order Conversions & reduce RTOs,Magic Checkout,App,https://razorpay.com/magic/
-Payments,Apps to Accept payment,Recurring payments using UPI App,UPI Auto pay,App,https://razorpay.com/upi-autopay/
-Banking,Business Banking,Business Banking powered for disruptors,RazorpayX,Solution,https://razorpay.com/x/
-Banking,Business Banking,Integrated procurement to payables,Source to Pay,Solution,https://razorpay.com/x/source-to-pay/
-Banking,Business Banking,24 x 7 instant automated payouts,Payouts,Solution,https://razorpay.com/x/payouts/
-Banking,Business Banking,Send money without recipient account details,Payout Links,Solution,https://razorpay.com/x/payout-links/
+Payments,Apps to Accept payment,Track and accept payments with Razorpay Mobile App. Get onboarded and start accepting payments within minutes. Track payments on the go and get real-time insights at your fingertips!,Payment Mobile App,App,https://razorpay.com/payments-app/
+Payments,Apps to Accept payment,Improve Order Conversions & reduce RTOs. Integrate Razorpay Magic Checkout to help customers complete prepaid and cash-on-delivery (COD) transactions on your website/app and reduce your COD RTOs.,Magic Checkout,App,https://razorpay.com/magic/
+Payments,Apps to Accept payment,Recurring payments using UPI App on Razorpay Subscriptions. Customers can now set up recurring payments using just their UPI App. Sign up today to experience this game-changer for subscription led-businesses in India.,UPI Auto pay,App,https://razorpay.com/upi-autopay/
+Banking,Business Banking,Business Banking powered for disruptors. Automate your banking and finances in one place with RazorpayX.,RazorpayX,Solution,https://razorpay.com/x/
+Banking,Business Banking,Integrated procurement to payables. Connect; automate and integrate your accounts payables and vendor payments workflow under a single platform,Source to Pay,Solution,https://razorpay.com/x/source-to-pay/
+Banking,Business Banking,24 x 7 instant automated payouts. Send payments instantly and securely to bank accounts. You can also send payout to UPI IDs and wallets via APIs; Dashboards and file uploads.,Payouts,Solution,https://razorpay.com/x/payouts/
+Banking,Business Banking,Send money without recipient account details. Send payments without bank account details. Enter the customer's name; contact details and amount to be paid. RazorpayX sends them a link where they can enter their account details (bank account or UPI ID). Once we get their account details; we send them the money.,Payout Links,Solution,https://razorpay.com/x/payout-links/
 Banking,Business Banking,Business Banking Live Demo of RazorpayX,Live Demo RazorpayX,Solution,https://razorpay.com/demo/
-Banking,Business Banking,Supercharged for businesses,Current Account,Solution,https://razorpay.com/x/current-accounts/
-Banking,Business Banking,Escrow account for digital first businesses,Escrow+ Account,Solution,https://razorpay.com/x/escrow-accounts/
-Banking,Business Banking,Expert-led Service to bring foreign currency,Forex / FDI Transfers,Solution,https://razorpay.com/x/forex/
-Banking,Business Banking,Instant Business tax payment,Tax Payments,Solution,https://razorpay.com/x/tax-payments/
-Banking,Credit,Get money for Business needs,Razorpay capital,Solution,https://razorpay.com/capital/
-Banking,Credit,"Get Short term loans - use, repay and repeat",Line of Credit,Solution,https://razorpay.com/x/line-of-credit/
-Banking,Credit,Corporate cards for growing business,Corporate CARDS,Solution,https://razorpay.com/x/corporate-cards/
-Banking,Business Banking,Fully compliant instant disbursal,Digital Lending 2.0,Solution,https://razorpay.com/x/digital-lending/
-Payroll,Payroll,Payroll Management for Startups and SMEs,Payroll,Solution,https://razorpay.com/payroll/
-Payroll,Payroll,Payroll for Enterprises,Payroll Enterprise,Solution,https://razorpay.com/x/payroll-enterprise/
+Banking,Business Banking,Advanced Current Accounts supercharged for businesses - SMEs; Startups and Enterprises,Current Account,Solution,https://razorpay.com/x/current-accounts/
+Banking,Business Banking,Escrow account for digital first businesses. Bring together Escrow account; Banks; Trusteeship services & Automation - all in ONE place to deliver a seamless user experience for you. Ensure your escrow money transfers are always compliant; safe & effortless,Escrow+ Account,Solution,https://razorpay.com/x/escrow-accounts/
+Banking,Business Banking,Expert-led Service to bring foreign currency. Raise funds globally; Transfer to India easily. Bring your foreign capital to India;with expert assistance; 100% compliance; and transparency at every step,Forex / FDI Transfers,Solution,https://razorpay.com/x/forex/
+Banking,Business Banking,Instant Business tax payment. Automate tax payments with pre-filled tax payment forms. You can collaborate with your accountant from the Dashboard for easy and timely tax disbursal and never miss a payment again.,Tax Payments,Solution,https://razorpay.com/x/tax-payments/
+Banking,Capital and Credit,Get money for Business needs.It is a lending platform that helps you to better manage your business financial needs with line of credit; corporate credit cards and collateral-free loans,Razorpay capital,Solution,https://razorpay.com/capital/
+Banking,Capital and Credit,Get Short term loans - use; repay and repeat. Optimise your business finance needs with a Line of Credit at low-interest rates and zero pre-closure fees.,Line of Credit,Solution,https://razorpay.com/x/line-of-credit/
+Banking,Capital and Credit,Corporate cards for growing business. Get high credit limit for your business expenditure with no security deposit or risk to personal credit score.,Corporate CARDS,Solution,https://razorpay.com/x/corporate-cards/
+Banking,Business Banking,Fully compliant instant disbursal. It supports Instant; effortless disbursals; is Digital lending guidelines compliant; and provides Seamless NBFC-Fintech collaboration,Digital Lending 2.0,Solution,https://razorpay.com/x/digital-lending/
+Payroll,Payroll,Payroll Management for Startups and SMEs. Automate your payroll software with precision– disburse salaries; file & pay taxes; like TDS; PF; PT & ESIC; and more from a single dashboard on your payroll software,Payroll,Solution,https://razorpay.com/payroll/
+Payroll,Payroll,Payroll for Enterprises. Calculate payroll and disburse salaries in a few clicks. RazorpayX Payroll automates payments and filings of compliances like TDS; PF; ESI; PT and much more.,Payroll Enterprise,Solution,https://razorpay.com/x/payroll-enterprise/
