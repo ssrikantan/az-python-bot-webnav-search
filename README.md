@@ -68,7 +68,10 @@ botbuilder-integration-aiohttp>=4.14.0
 
 Used the ZIP file method and cli command
 
-az webapp deployment source config-zip --resource-group "rpay-app-rg" --name "product-search-bot-app" --src "rpay-bot-app.zip"
+```cli
+az webapp deployment source config-zip --resource-group "rpay-app-rg" --name "webnav-search-app" --src "rpay-bot-app.zip"
+```
+
 
 ### Adding CORS
 

@@ -10,6 +10,10 @@ from datetime import datetime
 import openai
 import sys
 from config import DefaultConfig
+import json
+
+from botbuilder.schema import HeroCard, CardAction, ActionTypes, CardImage, Attachment, Activity, ActivityTypes
+from botbuilder.core import TurnContext, MessageFactory, CardFactory
 
 
 class StateManagementBot(ActivityHandler):
@@ -83,16 +87,49 @@ class StateManagementBot(ActivityHandler):
             llm_response = response_message["choices"][0]["message"]["content"]
             l_chat_history.append({"role": "assistant", "content": llm_response})
 
-            # Display state data.
-            await turn_context.send_activity(
-                f"{ user_profile.name } : { llm_response }"
-            )
-            # await turn_context.send_activity(
-            #     f"Message received at: { conversation_data.timestamp }"
-            # )
-            # await turn_context.send_activity(
-            #     f"Message received from: { conversation_data.channel_id }"
-            # )
+
+            #check if the response is a json
+            try:
+                json_response = llm_response[
+                    llm_response.find("{") : llm_response.rfind("}") + 1
+                ]
+                if json_response == "":
+                    print(llm_response)
+                                # Display state data.
+                    await turn_context.send_activity(
+                        f"{ user_profile.name } : { llm_response }"
+                    )
+                    # await turn_context.send_activity(
+                    #     f"Message received at: { conversation_data.timestamp }"
+                    # )
+                    # await turn_context.send_activity(
+                    #     f"Message received from: { conversation_data.channel_id }"
+                    # )
+                else:
+                    print(
+                        "have received the product details to be shown as a card"
+                    )
+                    resp_object = json.loads(json_response)
+                    product_name = resp_object["ProductName"]
+                    business_function = resp_object["BusinessFunction"]
+                    product_url = resp_object["ProductUrl"]
+                    print(product_name, business_function, product_url)
+                    card = self.create_hero_card(product_name, business_function, product_url)
+                    reply = MessageFactory.attachment(CardFactory.hero_card(card))
+                    # attachment = Attachment(content_type=HeroCard.CONTENT_TYPE, content=card.to_dict())
+                    # reply = Activity(type=ActivityTypes.message)
+                    # reply.text = "Here is the product you are looking for"
+                    # reply.attachments = [attachment]
+                    # attachment = Attachment(content_type=HeroCard.CONTENT_TYPE, content=card.to_dict())
+                    # activity = Activity(type=ActivityTypes.message, attachments=[attachment])
+                    # await turn_context.send_activity(MessageFactory.attachment(attachment))
+                    await turn_context.send_activity(reply)
+                    print("sent the card")
+            except:
+                pass
+
+
+
 
 
     async def on_turn(self, turn_context: TurnContext):
@@ -118,3 +155,15 @@ class StateManagementBot(ActivityHandler):
         # print(data)
         chat_history = [{"role": "system", "content": data}]
         return chat_history
+    
+    def create_hero_card(self, product_name, business_function, product_url) -> HeroCard:
+        card = HeroCard(
+            title=product_name,
+            subtitle=product_name,
+            text=business_function,
+            images=[CardImage(url="https://marketplace.cs-cart.com/images/thumbnails/700/280/detailed/4/logo_black.png")],
+            buttons=[
+                CardAction(type=ActionTypes.open_url, title="Launch Product Page", value=product_url)
+            ]
+        )
+        return card
